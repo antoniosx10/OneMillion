@@ -17,6 +17,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import java.util.Date;
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private int countCopy = 0;
 
     private TextView prova;
+
+    private Animation animHead;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
             final Date data = new Date();
             if(mChatHeadView == null){
                 mChatHeadView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.layout_head, null);
+
+                animHead = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.head_anim);
+
+                mChatHeadView.startAnimation(animHead);
 
                 //Add the view to the window.
                 final WindowManager.LayoutParams params = new WindowManager.LayoutParams(
