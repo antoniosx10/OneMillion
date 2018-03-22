@@ -19,6 +19,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
     private View mChatHeadView;
     private WindowManager mWindowManager;
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             final String type = intent.getStringExtra("TYPE");  //get the type of message from MyGcmListenerService 1 - lock or 0 -Unlock
-
+            final Date data = new Date();
             if(mChatHeadView == null){
                 mChatHeadView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.layout_head, null);
 
@@ -114,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                                     Intent intent = new Intent(MainActivity.this, Lista.class);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     intent.putExtra("messaggio",type);
+                                    intent.putExtra("Data",data);
                                     startActivity(intent);
                                     if (mChatHeadView != null) {
                                         mWindowManager.removeView(mChatHeadView);
