@@ -51,9 +51,8 @@ public class ProvaService extends Service {
                 Log.d("Testo",text);
                 in.putExtra("TYPE", text);
                 in.setAction("todashcopy");
-                //sendBroadcast(in);
-                LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(in);
-                //Inflate the chat head layout we created
+                sendBroadcast(in);
+                //LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(in);
             }
         });
         return super.onStartCommand(intent, flags, startId);

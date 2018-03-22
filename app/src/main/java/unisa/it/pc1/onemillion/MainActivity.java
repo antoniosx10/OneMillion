@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume()
     {
         super.onResume();
-        LocalBroadcastManager.getInstance(MainActivity.this).registerReceiver(broadcastReceiver, new IntentFilter("todashcopy"));
+        registerReceiver(broadcastReceiver, new IntentFilter("todashcopy"));
     }
 
 
