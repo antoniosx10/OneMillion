@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name="unisa.it.pc1.onemillion.ProvaService" />
+        <service android:name="unisa.it.pc1.onemillion.ListenerService" />
 
         <receiver
             android:name="unisa.it.pc1.onemillion.BootReceiver"
