@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -49,18 +50,22 @@ public class CustomAdapter extends ArrayAdapter<Task> {
 
         TextView nomeTask;
         TextView dataTask;
+        Button invia;
+        Button dettagli;
 
         nomeTask = (TextView) v.findViewById(R.id.task);
-
-
-
         dataTask = (TextView) v.findViewById(R.id.dataTask);
+        invia =v.findViewById(R.id.btnInvia);
+        dettagli = v.findViewById(R.id.btnDettagli);
 
         nomeTask.setText(t.getContenuto());
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         Date today = t.getData();
         String reportDate = df.format(today);
         dataTask.setText(reportDate);
+
+        invia.setTag(position);
+        dettagli.setTag(position);
 
         return v;
     }
