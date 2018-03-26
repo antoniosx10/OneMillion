@@ -18,6 +18,13 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.Date;
 
 /**
@@ -33,6 +40,9 @@ public class ListenerService extends Service {
 
     private WindowManager mWindowManager;
     private View mChatHeadView;
+
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mDatabaseReferences;
 
     @Nullable
     @Override
@@ -92,6 +102,11 @@ public class ListenerService extends Service {
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                         intent.putExtra("messaggio",text);
                                         intent.putExtra("Data",data);
+
+                                        //inizio firebase
+                                        initFirebase();
+
+
                                         startActivity(intent);
                                         if (mChatHeadView != null) {
                                             mWindowManager.removeView(mChatHeadView);
@@ -145,6 +160,15 @@ public class ListenerService extends Service {
         handler.postDelayed(runnable,4000);
 
     }
+
+    private void initFirebase(){
+        FirebaseApp.initializeApp(this);
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReferences = mFirebaseDatabase.getReference();
+    }
+
+
+
     private void stopTimerHead(){
         handler.removeCallbacks(runnable);
     }
