@@ -103,7 +103,7 @@ public class ListenerService extends Service {
                                         intent.putExtra("messaggio",text);
                                         intent.putExtra("Data",data);
 
-                                        //inizio firebase
+                                        //inizio firebase (da completare)
                                         initFirebase();
 
 
