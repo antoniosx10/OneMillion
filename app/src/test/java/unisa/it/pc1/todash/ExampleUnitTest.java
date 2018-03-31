@@ -1,4 +1,4 @@
-package unisa.it.pc1.onemillion;
+package unisa.it.pc1.todash;
 
 import org.junit.Test;
 

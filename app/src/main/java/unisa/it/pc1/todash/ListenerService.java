@@ -1,4 +1,4 @@
-package unisa.it.pc1.onemillion;
+package unisa.it.pc1.todash;
 
 import android.app.Service;
 import android.content.ClipData;
@@ -18,12 +18,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.Date;
 
@@ -41,8 +35,7 @@ public class ListenerService extends Service {
     private WindowManager mWindowManager;
     private View mChatHeadView;
 
-    private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference mDatabaseReferences;
+
 
     @Nullable
     @Override
@@ -94,20 +87,17 @@ public class ListenerService extends Service {
                                     lastAction = event.getAction();
                                     return true;
                                 case MotionEvent.ACTION_UP:
+
                                     //As we implemented on touch listener with ACTION_MOVE,
                                     //we have to check if the previous action was ACTION_DOWN
                                     //to identify if the user clicked the view or not.
                                     if (lastAction == MotionEvent.ACTION_DOWN) {
-                                        Intent intent = new Intent(ListenerService.this, Lista.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        intent.putExtra("messaggio",text);
-                                        intent.putExtra("Data",data);
-
-                                        //inizio firebase (da completare)
-                                        initFirebase();
-
-
+                                        Intent intent = new Intent(ListenerService.this, DialogActivity.class);
+                                        intent.putExtra("link",text);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                                         startActivity(intent);
+
+
                                         if (mChatHeadView != null) {
                                             mWindowManager.removeView(mChatHeadView);
                                             mChatHeadView = null;
@@ -159,12 +149,6 @@ public class ListenerService extends Service {
         };
         handler.postDelayed(runnable,4000);
 
-    }
-
-    private void initFirebase(){
-        FirebaseApp.initializeApp(this);
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReferences = mFirebaseDatabase.getReference();
     }
 
 

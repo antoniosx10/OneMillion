@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="unisa.it.pc1.onemillion">
+    package="unisa.it.pc1.todash">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:allowBackup="true"
@@ -12,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="unisa.it.pc1.onemillion.MainActivity">
+        <activity android:name="unisa.it.pc1.todash.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,21 +22,21 @@
             </intent-filter>
         </activity>
 
-        <service android:name="unisa.it.pc1.onemillion.ListenerService" />
+        <service android:name="unisa.it.pc1.todash.ListenerService" />
 
         <receiver
-            android:name="unisa.it.pc1.onemillion.BootReceiver"
+            android:name="unisa.it.pc1.todash.BootReceiver"
             android:label="BootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
-
         <activity
-            android:theme="@style/AppTheme"
-            android:name="unisa.it.pc1.onemillion.Lista">
-        </activity>
+            android:name="unisa.it.pc1.todash.Lista"
+            android:theme="@style/AppTheme"></activity>
+        <activity android:name="unisa.it.pc1.todash.DialogActivity"
+            android:theme="@style/Theme.AppCompat.Dialog"></activity>
     </application>
 
 </manifest>

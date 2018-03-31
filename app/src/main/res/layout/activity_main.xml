@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="unisa.it.pc1.onemillion.unisa.it.pc1.onemillion.MainActivity">
+    tools:context="unisa.it.pc1.todash.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"

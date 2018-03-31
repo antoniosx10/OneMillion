@@ -20,9 +20,13 @@ android {
 
 dependencies {
     implementation 'com.android.support:support-v4:26.1.0'
-    compile "com.android.support:appcompat-v7:26.1.0"
-    compile 'com.google.firebase:firebase-core:12.0.0'
-    compile 'com.google.firebase:firebase-database:12.0.0'
+
+    implementation "com.android.support:appcompat-v7:26.1.0"
+
+
+    implementation 'com.leocardz:link-preview:2.0.0@aar'
+    implementation files('libs/jsoup-1.11.2.jar')
+    implementation files('libs/jsoup-1.11.2.jar')
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
@@ -34,4 +38,3 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
 
-apply plugin: 'com.google.gms.google-services'
