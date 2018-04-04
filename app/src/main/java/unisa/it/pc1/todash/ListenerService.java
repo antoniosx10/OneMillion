@@ -95,6 +95,7 @@ public class ListenerService extends Service {
                                         Intent intent = new Intent(ListenerService.this, DialogActivity.class);
                                         intent.putExtra("link",text);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(intent);
 
 

@@ -13,7 +13,7 @@ public class BootReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             Intent serviceIntent = new Intent(context, ListenerService.class);
-            context.startService(serviceIntent);
+           // context.startService(serviceIntent);
         }
     }
 }

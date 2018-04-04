@@ -25,12 +25,6 @@ public class MainActivity extends AppCompatActivity {
                     Uri.parse("package:" + getPackageName()));
             startActivityForResult(intent, 1000);
         }
-
-        //Usato per testare senza dover ogni volta spegnere e accendere il dispositivo.
-        Intent serviceIntent = new Intent(getApplicationContext(), ListenerService.class);
-        startService(serviceIntent);
-
-        prova = findViewById(R.id.provaTesto);
     }
 
 }

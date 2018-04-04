@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="unisa.it.pc1.todash.MainActivity">
+        <activity android:name=".SignActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,10 +21,10 @@
             </intent-filter>
         </activity>
 
-        <service android:name="unisa.it.pc1.todash.ListenerService" />
+        <service android:name=".ListenerService" />
 
         <receiver
-            android:name="unisa.it.pc1.todash.BootReceiver"
+            android:name=".BootReceiver"
             android:label="BootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -33,10 +32,12 @@
         </receiver>
 
         <activity
-            android:name="unisa.it.pc1.todash.Lista"
-            android:theme="@style/AppTheme"></activity>
-        <activity android:name="unisa.it.pc1.todash.DialogActivity"
-            android:theme="@style/Theme.AppCompat.Dialog"></activity>
+            android:name=".Lista"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".DialogActivity"
+            android:theme="@style/Theme.AppCompat.Dialog" />
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
