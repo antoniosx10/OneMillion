@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "1031918690130",
+    "firebase_url": "https://onemillion-c396f.firebaseio.com",
+    "project_id": "onemillion-c396f",
+    "storage_bucket": "onemillion-c396f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031918690130:android:068babca5fdb2b6d",
+        "android_client_info": {
+          "package_name": "unisa.it.pc1.onemillion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031918690130-19g7efq8vie6bl8ckeilbs3u5eabkt6a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "unisa.it.pc1.onemillion",
+            "certificate_hash": "c87660b7fed4da2891a0dca6c7b8a602096320cc"
+          }
+        },
+        {
+          "client_id": "1031918690130-bp7oct5166v7t95b50k7mibo47u81ol9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "unisa.it.pc1.onemillion",
+            "certificate_hash": "c5db04e9943753a542cbb897ab95246f7f356905"
+          }
+        },
+        {
+          "client_id": "1031918690130-k16d3fjpbb6jcfmumtfer836lkumpq42.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZguH7Vfjzg-LN5CyiF89E84PBcMmjgfc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031918690130-k16d3fjpbb6jcfmumtfer836lkumpq42.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
