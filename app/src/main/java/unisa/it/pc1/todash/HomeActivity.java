@@ -20,9 +20,6 @@ import android.view.View;
 import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-    private ViewPageAdapter viewPageAdapter;
 
 
     private DrawerLayout mDrawerLayout;
@@ -31,6 +28,25 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
+            //If the draw over permission is not available open the settings screen
+            //to grant the permission.
+            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                    Uri.parse("package:" + getPackageName()));
+            startActivityForResult(intent, 1000);
+        }
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Class fragmentClass = HomeFragment.class;
+        try {
+            fragmentManager.beginTransaction().replace(R.id.switch_fragment, HomeFragment.class.newInstance()).commit();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
@@ -73,24 +89,6 @@ public class HomeActivity extends AppCompatActivity {
                 }
         );
 
-        tabLayout = findViewById(R.id.tabLayout);
-        viewPager = findViewById(R.id.viewPager);
-
-        viewPageAdapter = new ViewPageAdapter(getSupportFragmentManager());
-
-        viewPageAdapter.addFragment(new ContactFragment(),"Contatti");
-        viewPageAdapter.addFragment(new TaskFragment(),"ToDo");
-        viewPageAdapter.addFragment(new AddTeamFragment(),"Aggiungi Team");
-
-
-        viewPager.setAdapter(viewPageAdapter);
-
-        tabLayout.setupWithViewPager(viewPager);
-
-        tabLayout.getTabAt(0).setIcon(R.drawable.ic_group);
-        tabLayout.getTabAt(1).setIcon(R.drawable.ic_save_black_24dp);
-        tabLayout.getTabAt(2).setIcon(R.drawable.ic_group_add_black_24dp);
-
 
 
 
@@ -122,11 +120,14 @@ public class HomeActivity extends AppCompatActivity {
         Fragment fragment = null;
         Class fragmentClass;
         switch(menuItem.getItemId()) {
+            case R.id.nav_Home:
+                fragmentClass = HomeFragment.class;
+                break;
             case R.id.nav_profilo:
                 fragmentClass = ProfiloFragment.class;
                 break;
             default:
-                fragmentClass = ProfiloFragment.class;
+                fragmentClass = HomeFragment.class;
         }
 
         try {
@@ -137,7 +138,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // Insert the fragment by replacing any existing fragment
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.switch_fragment, fragment).commit();
 
         // Highlight the selected item has been done by NavigationView
         menuItem.setChecked(true);

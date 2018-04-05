@@ -72,7 +72,7 @@ public class DialogActivity extends AppCompatActivity {
     }
 
     public void salva(View v) {
-        Task dialogTask = new Task(link,new Date());
+        Task dialogTask = new Task(link,new Date(),R.drawable.ic_launcher_background);
 
         databaseReference.push().setValue(dialogTask);
         Toast.makeText(getApplicationContext(),"Messaggio Salvato",Toast.LENGTH_SHORT).show();

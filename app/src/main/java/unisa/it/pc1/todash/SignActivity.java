@@ -75,13 +75,6 @@ public class SignActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
-                    //If the draw over permission is not available open the settings screen
-                    //to grant the permission.
-                    Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                            Uri.parse("package:" + getPackageName()));
-                    startActivityForResult(intent, 1000);
-                }
 
                 Intent serviceIntent = new Intent(getApplicationContext(), ListenerService.class);
                 startService(serviceIntent);
