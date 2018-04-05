@@ -7,7 +7,6 @@ import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
@@ -44,7 +43,7 @@ public class SignActivity extends AppCompatActivity {
             Intent serviceIntent = new Intent(getApplicationContext(), ListenerService.class);
             startService(serviceIntent);
 
-            Intent mainactivity = new Intent(getApplicationContext(),MainActivity.class);
+            Intent mainactivity = new Intent(getApplicationContext(),HomeActivity.class);
             startActivity(mainactivity);
 
 
@@ -87,7 +86,7 @@ public class SignActivity extends AppCompatActivity {
                 Intent serviceIntent = new Intent(getApplicationContext(), ListenerService.class);
                 startService(serviceIntent);
 
-                Intent mainactivity = new Intent(getApplicationContext(),MainActivity.class);
+                Intent mainactivity = new Intent(getApplicationContext(),HomeActivity.class);
                 startActivity(mainactivity);
 
 

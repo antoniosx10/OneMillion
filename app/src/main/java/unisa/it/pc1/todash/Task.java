@@ -10,10 +10,12 @@ public class Task {
 
     private String contenuto;
     private Date data;
+    private int foto;
 
-    public Task(String contenuto, Date data) {
+    public Task(String contenuto, Date data, int foto) {
         this.contenuto = contenuto;
         this.data = data;
+        this.foto = foto;
     }
 
     public String getContenuto() {
@@ -30,5 +32,13 @@ public class Task {
 
     public void setData(Date data) {
         this.data = data;
+    }
+
+    public int getFoto() {
+        return foto;
+    }
+
+    public void setFoto(int foto) {
+        this.foto = foto;
     }
 }
