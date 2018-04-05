@@ -6,11 +6,16 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.leocardz.link.preview.library.LinkPreviewCallback;
 import com.leocardz.link.preview.library.SourceContent;
 import com.leocardz.link.preview.library.TextCrawler;
@@ -18,28 +23,31 @@ import com.leocardz.link.preview.library.TextCrawler;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Date;
 
 public class DialogActivity extends AppCompatActivity {
 
     private TextView dialog_name;
-    private  TextView dialog_descrizione;
+    private TextView dialog_descrizione;
     private ImageView dialog_immagine;
 
     private ProgressBar avanzamento;
-
     private TextCrawler textCrawler;
-
     private RelativeLayout item;
-
+    private DatabaseReference databaseReference;
+    private String link;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_send);
 
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        databaseReference = FirebaseDatabase.getInstance().getReference("task");
+
         Intent intent = getIntent();
 
-        String link = intent.getStringExtra("link");
+        link = intent.getStringExtra("link");
 
         dialog_name = findViewById(R.id.dialog_name);
         dialog_descrizione = findViewById(R.id.dialog_descrizione);
@@ -61,8 +69,15 @@ public class DialogActivity extends AppCompatActivity {
         }else{
             dialog_name.setText(link);
         }
+    }
 
+    public void salva(View v) {
+        Task dialogTask = new Task(link,new Date());
 
+        databaseReference.push().setValue(dialogTask);
+        Toast.makeText(getApplicationContext(),"Messaggio Salvato",Toast.LENGTH_SHORT).show();
+
+        finish();
     }
 
     LinkPreviewCallback linkPreviewCallback = new LinkPreviewCallback() {
@@ -91,7 +106,6 @@ public class DialogActivity extends AppCompatActivity {
             return false;
         }
     }
-
 
     class ImageLoadTask extends AsyncTask<Void, Integer, Bitmap> {
 
